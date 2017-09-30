@@ -8,7 +8,6 @@ COPY . /app
 WORKDIR /app
 
 # Install dependencies
-RUN apt-get update
 RUN npm install
 
 # Expose API port to the outside
