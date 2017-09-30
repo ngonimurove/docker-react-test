@@ -8,7 +8,7 @@ COPY . /app
 WORKDIR /app
 
 # Install dependencies
-RUN npm install
+RUN apt-get update && apt-get install npm && npm install 
 
 # Expose API port to the outside
 EXPOSE 3000
