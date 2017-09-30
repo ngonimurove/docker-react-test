@@ -1,6 +1,8 @@
 # Use node 8.2.1
 FROM node:8.2.1
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Copy source code
 COPY . /app
 
@@ -8,10 +10,9 @@ COPY . /app
 WORKDIR /app
 
 # Install dependencies
-RUN apt-get update && apt-get install npm && npm install 
-
-# Expose API port to the outside
-EXPOSE 3000
+RUN apt-get update
+RUN chown node:node -R .
+RUN npm install 
 
 # Launch application
-CMD ["npm","start"]
+CMD ["yarn","start"]
